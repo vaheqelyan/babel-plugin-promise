@@ -3,7 +3,9 @@ module.exports = function(babel) {
     return {
         visitor: {
             Identifier(path) {
-                console.log(path);
+                if (path.node.name === "async") {
+                    console.log(path.node.name);
+                }
             }
         }
     };
