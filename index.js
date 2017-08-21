@@ -8,7 +8,7 @@ module.exports = function(babel) {
                 if (isPromise === "promise") {
                     let arrow = path.node.right;
                     promisedName = arrow.params[0].name;
-                    console.log(path.node);
+                    console.log(path.node.left);
                 }
             }
         }
