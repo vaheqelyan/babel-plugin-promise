@@ -9,7 +9,7 @@ module.exports = function(babel) {
                     const comment =
                         comment1[0].value.match(/@([^ ]*)/)[1] == undefined
                             ? comment2[0].value.match(/@([^ ]*)/)[1]
-                            : commen1t[0].value.match(/@([^ ]*)/)[1];
+                            : comment1[0].value.match(/@([^ ]*)/)[1];
                     console.log(comment);
                 }
                 // if (comment !== null) {
