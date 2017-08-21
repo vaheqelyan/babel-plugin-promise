@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             Identifier(path) {
-                console.log(path.parentPath);
+                console.log(path.parentPath.type);
             }
         }
     };
