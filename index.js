@@ -24,6 +24,7 @@ module.exports = function(babel) {
                                 )
                             ])
                         );
+                        console.log(path.node.argument);
                     } else {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
