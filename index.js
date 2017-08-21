@@ -11,7 +11,10 @@ module.exports = function(babel) {
                         console.log("MemberExpression !");
                     } else {
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
-                            t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement()]))
+                            t.ArrowFunctionExpression(
+                                [t.Identifier("resolve"), t.Identifier("reject")],
+                                t.BlockStatement([t.ExpressionStatement(path.node.argument)])
+                            )
                         ]);
                     }
                 }
