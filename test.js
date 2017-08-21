@@ -12,6 +12,6 @@ async function name() {
     await findOne(callback(err, user));
 
     async function asd() {
-        await hello(null, callback(err, asd));
+        await hello(null, callback(err, asd)); //asdasd
     }
 }
