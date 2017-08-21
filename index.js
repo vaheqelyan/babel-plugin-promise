@@ -4,6 +4,7 @@ module.exports = function(babel) {
         visitor: {
             AwaitExpression(path) {
                 let comment = path.parentPath.node.trailingComments;
+                console.log(comment);
                 // if (comment !== null) {
                 //     console.log(comment);
                 //     // comment = comment[0].value.match(/@([^ ]*)/)[1];
