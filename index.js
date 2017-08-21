@@ -51,6 +51,8 @@ module.exports = function(babel) {
                             )
                         ]);
                     }
+                } else {
+                    console.log("not");
                 }
             }
         }
