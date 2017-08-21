@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             ExpressionStatement(path) {
-                console.log(path.node.leadingComments);
+                let comment = path.node.leadingComments[0];
             }
         }
     };
