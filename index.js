@@ -6,7 +6,9 @@ module.exports = function(babel) {
                 let isPromise = path.node.left.name;
                 if (isPromise === "promise") {
                     let expression = path.node.right;
-                    console.log(expression.callee.type);
+                    let type = expression.callee.type;
+                    if (type === "Identifier") {
+                    }
                 }
             }
         }
