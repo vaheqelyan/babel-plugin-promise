@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             AssignmentExpression(path) {
-                let isPromise = path.node.left.name;
+                var isPromise = path.node.left.name;
                 let promisedName = String;
                 if (isPromise === "promise") {
                     let arrow = path.node.right;
