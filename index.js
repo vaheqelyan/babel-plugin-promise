@@ -8,8 +8,7 @@ module.exports = function(babel) {
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
 
                     if (
-                        path.node.argument.callee.type ===
-                        "MemberExpression"
+                        path.node.argument.callee.type === "MemberExpression"
                     ) {
                         console.log("MemberExpression !");
                     } else {
@@ -32,10 +31,9 @@ module.exports = function(babel) {
                                     )
                                 ),
                                 t.ExpressionStatement(
-                                    t.CallExpression(
-                                        t.Identifier("resolve"),
-                                        [t.Identifier("user")]
-                                    )
+                                    t.CallExpression(t.Identifier("resolve"), [
+                                        t.Identifier("user")
+                                    ])
                                 )
                             ])
                         );
