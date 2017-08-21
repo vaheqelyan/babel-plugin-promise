@@ -4,7 +4,7 @@ module.exports = function(babel) {
         visitor: {
             ExpressionStatement(path) {
                 let comment = path.node.leadingComments;
-                console.log(comment);
+                console.log(comment[0]);
             }
         }
     };
