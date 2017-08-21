@@ -4,6 +4,9 @@ module.exports = function(babel) {
         visitor: {
             AssignmentExpression(path) {
                 let isPromise = path.node.left.name;
+                if (isPromise === "promise") {
+                    console.log(path.node);
+                }
             }
         }
     };
