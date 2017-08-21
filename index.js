@@ -7,9 +7,7 @@ module.exports = function(babel) {
                 if (comment) {
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
 
-                    if (
-                        path.node.argument.callee.type === "MemberExpression"
-                    ) {
+                    if (path.node.argument.callee.type === "MemberExpression") {
                         console.log("MemberExpression !");
                     } else {
                         let getCallbackArguments =
