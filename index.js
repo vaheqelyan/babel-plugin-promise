@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             ExpressionStatement(path) {
-                let comment = path.node.leadingComments[0];
+                let comment = path.node.leadingComments[0].name.match(/@([^ ]*)/)[1];
             }
         }
     };
