@@ -8,7 +8,7 @@ module.exports = function(babel) {
                 //path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
                 //path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
             },
-            FunctionDeclaration(path) {
+            CallExpression(path) {
                 path.insertBefore(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
                 path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
             }
