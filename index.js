@@ -18,9 +18,13 @@ module.exports = function(babel) {
                             t.BlockStatement([
                                 t.IfStatement(
                                     t.Identifier("err"),
-                                    t.ExpressionStatement(t.CallExpression(t.Identifier("reject"), [t.Identifier("err")]))
+                                    t.ExpressionStatement(
+                                        t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
+                                    )
                                 ),
-                                t.ExpressionStatement(t.CallExpression(t.Identifier("resolve"), [t.Identifier("user")]))
+                                t.ExpressionStatement(
+                                    t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)])
+                                )
                             ])
                         );
 
