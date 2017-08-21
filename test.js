@@ -3,7 +3,7 @@ async function name() {
     asdfasdf;
     asdfasdf;
     
-    function(){
+    function asd(){
         //@promise
         let name = await findOne(arg1, callback(err, user)).async();
     }
