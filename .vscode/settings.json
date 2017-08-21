@@ -1,5 +1,5 @@
 {
     "editor.fontSize": 18,
     "editor.formatOnSave": true,
-    "prettier.printWidth": 90
+    "prettier.printWidth": 100
 }
