@@ -6,7 +6,7 @@ module.exports = function(babel) {
                 let isPromise = path.node.left.name;
                 if (isPromise === "promise") {
                     let arrow = path.node.right;
-                    console.log(arrow.params[0].type);
+                    arrow.params[0].name;
                 }
             }
         }
