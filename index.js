@@ -6,8 +6,6 @@ module.exports = function(babel) {
                 let isPromise = path.node.left.name;
                 if (isPromise === "promise") {
                     let expression = path.node.right;
-                    let type = expression.callee.type;
-                    console.log(expression.arguments);
                 }
             }
         }
