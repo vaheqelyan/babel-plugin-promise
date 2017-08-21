@@ -5,8 +5,10 @@ module.exports = function(babel) {
             AwaitExpression(path) {
                 let comment1 = path.parentPath.node.leadingComments;
                 let comment2 = path.parentPath.parentPath.node.leadingComments;
-                console.log(comment1);
-                console.log(comment2);
+                if (comment1 !== null || comment2 !== null) {
+                    comment = comment[0].value.match(/@([^ ]*)/)[1];
+                    console.log(comment);
+                }
                 // if (comment !== null) {
                 //     console.log(comment);
                 //     // comment = comment[0].value.match(/@([^ ]*)/)[1];
