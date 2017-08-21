@@ -1,4 +1,4 @@
-function name() {
+async function name() {
     //@myasync
-    findOne(arg1, callback(err, user)).async();
+    await findOne(arg1, callback(err, user)).async();
 }
