@@ -19,7 +19,6 @@ module.exports = function(babel) {
                                 t.BlockStatement([t.ExpressionStatement(path.node.argument)])
                             )
                         ]);
-                        console.log(path.node.argument.body);
                     }
                 }
                 // if (comment !== null) {
