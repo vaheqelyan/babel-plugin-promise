@@ -2,7 +2,7 @@ module.exports = function(babel) {
     const t = babel.types;
     return {
         visitor: {
-            CallExpression(path) {
+            ExpressionStatement(path) {
                 console.log(path.leadingComments);
             }
         }
