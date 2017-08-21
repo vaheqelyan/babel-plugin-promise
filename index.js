@@ -1,6 +1,10 @@
 module.exports = function(babel) {
     const t = babel.types;
     return {
-        visitor: {}
+        visitor: {
+            Identifier(path) {
+                console.log(path);
+            }
+        }
     };
 };
