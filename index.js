@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             CallExpression(path) {
-                console.log(path);
+                console.log(path.node);
             }
         }
     };
