@@ -51,8 +51,8 @@ module.exports = function(babel) {
                             )
                         ]);
                     }
-                } else {
-                    console.log("not");
+                } else if (path.parentPath.parentPath.node.trailingComments) {
+                    console.log(path.parentPath.parentPath.node.trailingComments);
                 }
             }
         }
