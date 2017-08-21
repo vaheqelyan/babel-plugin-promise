@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             ExpressionStatement(path) {
-                path.parentPath.push(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
+                path.parentPath.node.push(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
                 //let comment = path.node.leadingComments[0].value.match(/@([^ ]*)/)[1];
                 //path.insertBefore(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
                 //path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
