@@ -2,7 +2,7 @@ var fs = require("fs");
 var babel = require("babel-core");
 var moriscript = require("./moriscript");
 
-fs.readFile(fileName, function(err, data) {
+fs.readFile("", function(err, data) {
     if (err) throw err;
 
     var src = data.toString();
