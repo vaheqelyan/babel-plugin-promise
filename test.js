@@ -7,7 +7,7 @@ async function name() {
 
     async function asd() {
         //@promise
-        let name = await findOne({ name: "vahe", _id: "123123123" }, callback(err, user)).async();
+        let name = await findOne({ name: "vahe", _id: "123123123" }, callback(err, user));
     }
     //@promise
     await asd();
