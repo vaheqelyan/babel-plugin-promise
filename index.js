@@ -9,6 +9,7 @@ module.exports = function(babel) {
                     let arrow = path.node.right;
                     promisedName = arrow.params[0].name;
                     path.node.left.name = promisedName;
+                    arrow.params.length = 0;
                 }
             }
         }
