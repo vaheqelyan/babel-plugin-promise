@@ -16,7 +16,7 @@ module.exports = function(babel) {
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
                             t.ArrowFunctionExpression(
                                 [t.Identifier("resolve"), t.Identifier("reject")],
-                                t.BlockStatement([t.ExpressionStatement(t.CallExpression(path.node.argument.callee, []))])
+                                t.BlockStatement([t.ExpressionStatement(t.CallExpression(t.Identifier("asdf"), []))])
                             )
                         ]);
                     }
