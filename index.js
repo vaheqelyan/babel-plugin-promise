@@ -4,7 +4,7 @@ module.exports = function(babel) {
         visitor: {
             Identifier(path) {
                 if (path.node.name === "async") {
-                    console.log(path.parentPath.node.object);
+                    console.log(path.parentPath.node.object.calee);
                 }
             }
         }
