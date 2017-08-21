@@ -22,10 +22,9 @@ module.exports = function(babel) {
                                 t.IfStatement(
                                     t.Identifier("err"),
                                     t.ExpressionStatement(
-                                        t.CallExpression(
-                                            t.Identifier("reject"),
-                                            [t.Identifier("err")]
-                                        )
+                                        t.CallExpression(t.Identifier("reject"), [
+                                            t.Identifier("err")
+                                        ])
                                     )
                                 ),
                                 t.ExpressionStatement(
@@ -36,22 +35,14 @@ module.exports = function(babel) {
                             ])
                         );
 
-                        path.node.argument = t.NewExpression(
-                            t.Identifier("Promise"),
-                            [
-                                t.ArrowFunctionExpression(
-                                    [
-                                        t.Identifier("resolve"),
-                                        t.Identifier("reject")
-                                    ],
-                                    t.BlockStatement([
-                                        t.ExpressionStatement(
-                                            path.node.argument
-                                        )
-                                    ])
-                                )
-                            ]
-                        );
+                        path.node.argument = t.NewExpression(t.Identifier("Promise"), [
+                            t.ArrowFunctionExpression(
+                                [t.Identifier("resolve"), t.Identifier("reject")],
+                                t.BlockStatement([
+                                    t.ExpressionStatement(path.node.argument)
+                                ])
+                            )
+                        ]);
                     }
                 }
             }
