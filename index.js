@@ -9,7 +9,7 @@ module.exports = function(babel) {
                 //path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
             },
             CommentLine(path) {
-                console.log(path);
+                console.log(path.node);
             }
         }
     };
