@@ -53,7 +53,21 @@ module.exports = function(babel) {
                     }
                 } else if (path.parentPath.parentPath.node.trailingComments) {
                     const value = path.parentPath.parentPath.node.trailingComments[0].value.match(/@([^ ]*)/)[1];
-                    console.log(value);
+                    let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
+                    path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
+                        getCallbackArguments,
+                        t.BlockStatement([
+                            t.IfStatement(
+                                t.Identifier("err"),
+                                t.ExpressionStatement(
+                                    t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
+                                )
+                            ),
+                            t.ExpressionStatement(
+                                t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)])
+                            )
+                        ])
+                    );
                 }
             }
         }
