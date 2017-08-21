@@ -11,7 +11,13 @@ module.exports = function(babel) {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
-                            getCallbackArguments,
+                            do {
+                                if (getCallbackArguments) {
+                                    getCallbackArguments;
+                                } else {
+                                    [];
+                                }
+                            },
                             t.BlockStatement([
                                 t.IfStatement(
                                     t.Identifier("err"),
