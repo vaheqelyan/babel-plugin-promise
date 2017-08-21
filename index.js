@@ -5,7 +5,8 @@ module.exports = function(babel) {
             AssignmentExpression(path) {
                 let isPromise = path.node.left.name;
                 if (isPromise === "promise") {
-                    let expression = path.node.right;
+                    let arrow = path.node.right;
+                    console.log(arrow.params);
                 }
             }
         }
