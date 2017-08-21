@@ -10,9 +10,9 @@ module.exports = function(babel) {
                     if (path.node.argument.callee.type === "MemberExpression") {
                         console.log("MemberExpression !");
                     } else {
-                        path.node.argument.replaceWithSourceString(`function add(a, b) {
-                            return a + b;
-                          }`);
+                        path.node.argument..replaceWith(
+                            t.binaryExpression("**", path.node.left, t.numberLiteral(2))
+                          );
                     }
                 }
                 // if (comment !== null) {
