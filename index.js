@@ -53,6 +53,7 @@ module.exports = function(babel) {
                     }
                 } else if (path.parentPath.parentPath.node.trailingComments) {
                     const value = path.parentPath.parentPath.node.trailingComments[0].value.match(/@([^ ]*)/)[1];
+                    console.log(value);
                 }
             }
         }
