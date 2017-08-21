@@ -13,7 +13,7 @@ module.exports = function(babel) {
                         let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
-                            t.BlockStatement([t.IfStatement(t.BinaryExpression(t.Identifier("err")))])
+                            t.BlockStatement([t.IfStatement(t.Identifier("err"))])
                         );
 
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
