@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             AssignmentExpression(path) {
-                console.log(path.node);
+                console.log(path.node.left);
             }
         }
     };
