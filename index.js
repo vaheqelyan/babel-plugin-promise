@@ -7,7 +7,7 @@ module.exports = function(babel) {
                 let promisedName = String;
                 if (isPromise === "promise") {
                     let arrow = path.node.right;
-                    arrow.params[0].name;
+                    promisedName = arrow.params[0].name;
                 }
             }
         }
