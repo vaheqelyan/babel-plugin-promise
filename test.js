@@ -6,6 +6,6 @@ async function name() {
     await findOne(callback(err, user));
 
     async function asd() {
-        await Use({ name: "vahe", _id: "123123123" }, callback(err, profile)); ? getCallbackArguments : [],
+        await Use({ name: "vahe", _id: "123123123" }, callback(err, profile)); //@profile
     }
 }
