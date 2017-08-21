@@ -9,8 +9,7 @@ module.exports = function(babel) {
                 //path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
             },
             CommentLine(path) {
-                path.insertBefore(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
-                path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
+                console.log(path);
             }
         }
     };
