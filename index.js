@@ -15,7 +15,7 @@ module.exports = function(babel) {
                             getCallbackArguments,
                             t.BlockStatement([])
                         );
-                        console.log(path.node.argument.arguments[path.node.argument.arguments.length - 1]);
+                        console.log(path.node.argument.arguments[path.node.argument.arguments.length - 1].body);
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
                             t.ArrowFunctionExpression(
                                 [t.Identifier("resolve"), t.Identifier("reject")],
