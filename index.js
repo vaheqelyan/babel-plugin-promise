@@ -10,6 +10,7 @@ module.exports = function(babel) {
                     if (path.node.argument.callee.type === "MemberExpression") {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
+                        console.log(getCallbackArguments);
                     } else {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
