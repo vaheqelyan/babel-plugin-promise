@@ -17,7 +17,8 @@ module.exports = function(babel) {
                                 t.IfStatement(
                                     t.Identifier("err"),
                                     t.ExpressionStatement(t.CallExpression(t.Identifier("reject"), [t.Identifier("err")]))
-                                )
+                                ),
+                                t.CallExpression(t.Identifier("resolve"), [t.Identifier("user")])
                             ])
                         );
 
