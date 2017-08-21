@@ -7,9 +7,9 @@ module.exports = function(babel) {
                 let comment = path.parentPath.node.leadingComments;
                 if (comment !== null) {
                     comment = comment[0].value.match(/@([^ ]*)/)[1];
-                    // path.replaceWithSourceString(`function add(a, b) {
-                    //     return a + b;
-                    //   }`);
+                    path.replaceWithSourceString(`function add(a, b) {
+                        return a + b;
+                      }`);
                 }
             }
         }
