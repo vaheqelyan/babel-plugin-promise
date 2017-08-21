@@ -4,11 +4,12 @@ module.exports = function(babel) {
         visitor: {
             AwaitExpression(path) {
                 let comment = path.parentPath.parentPath.node.leadingComments;
-                if (comment !== null) {
-                    console.log(comment);
-                    // comment = comment[0].value.match(/@([^ ]*)/)[1];
-                    // console.log(comment);
-                }
+                console.log(Comment);
+                // if (comment !== null) {
+                //     console.log(comment);
+                //     // comment = comment[0].value.match(/@([^ ]*)/)[1];
+                //     // console.log(comment);
+                // }
             }
         }
     };
