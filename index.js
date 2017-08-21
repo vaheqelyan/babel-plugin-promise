@@ -3,9 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             AssignmentExpression(path) {
-                if (path.node.name === "async") {
-                    console.log(path.parentPath.node.object.callee.object);
-                }
+                console.log(path);
             }
         }
     };
