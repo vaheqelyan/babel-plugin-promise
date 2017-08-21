@@ -7,9 +7,6 @@ module.exports = function(babel) {
                 //path.insertBefore(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
                 //path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
                 //path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
-            },
-            CommentLine(path) {
-                console.log(path);
             }
         }
     };
