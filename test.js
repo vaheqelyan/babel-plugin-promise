@@ -8,5 +8,4 @@ async function name() {
     async function asd() {
         await Use({ name: "vahe", _id: "123123123" }, callback(err, profile));
     }
-    await asd(null, callback(null, null)); //@promise
 }
