@@ -4,7 +4,7 @@ module.exports = function(babel) {
         visitor: {
             ExpressionStatement(path) {
                 //let comment = path.node.leadingComments[0].value.match(/@([^ ]*)/)[1];
-                path.node.replaceWith(t.expressionStatement(t.stringLiteral("Anyway the wind blows, doesn't really matter to me, to me.")));
+                console.log(path);
             }
         }
     };
