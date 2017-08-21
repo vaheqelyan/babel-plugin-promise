@@ -3,7 +3,8 @@ module.exports = function(babel) {
     return {
         visitor: {
             AwaitExpression(path) {
-                let comment = path.parentPath.node.leadingComments;
+                let comment1 = path.parentPath.node.leadingComments;
+                let comment2 = path.parentPath.parentPath.node.leadingComments;
                 console.log(comment);
                 // if (comment !== null) {
                 //     console.log(comment);
