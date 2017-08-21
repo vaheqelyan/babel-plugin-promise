@@ -11,8 +11,7 @@ module.exports = function(babel) {
                         console.log("MemberExpression !");
                     } else {
                         let getCallbackArguments =
-                            path.node.argument.arguments[path.node.argument.arguments.length - 1]
-                                .arguments;
+                            path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
                         path.node.argument.arguments[
                             path.node.argument.arguments.length - 1
                         ] = t.ArrowFunctionExpression(
@@ -21,15 +20,11 @@ module.exports = function(babel) {
                                 t.IfStatement(
                                     t.Identifier("err"),
                                     t.ExpressionStatement(
-                                        t.CallExpression(t.Identifier("reject"), [
-                                            t.Identifier("err")
-                                        ])
+                                        t.CallExpression(t.Identifier("reject"), [t.Identifier("err")])
                                     )
                                 ),
                                 t.ExpressionStatement(
-                                    t.CallExpression(t.Identifier("resolve"), [
-                                        t.Identifier("user")
-                                    ])
+                                    t.CallExpression(t.Identifier("resolve"), [t.Identifier("user")])
                                 )
                             ])
                         );
