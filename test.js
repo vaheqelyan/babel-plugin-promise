@@ -2,8 +2,8 @@ async function name() {
     asdf;
     asdfasdf;
     asdfasdf;
-    //@promise
-    await findOne(callback(err, user));
+
+    await findOne(callback(err, user)); //@promise
 
     async function asd() {
         //@promise
