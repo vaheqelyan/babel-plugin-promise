@@ -1,4 +1,2 @@
-function x() {
-    //@myasync
-    findOne(arg1, callback(err, user)).async();
-}
+//@myasync
+findOne(arg1, callback(err, user)).async();
