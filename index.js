@@ -7,7 +7,7 @@ module.exports = function(babel) {
                 let comment2 = path.parentPath.parentPath.node.leadingComments;
                 if (comment1 !== null || comment2 !== null) {
                     const comment =
-                        comment[0].value.match(/@([^ ]*)/)[1] == undefined
+                        comment1[0].value.match(/@([^ ]*)/)[1] == undefined
                             ? comment2[0].value.match(/@([^ ]*)/)[1]
                             : commen1t[0].value.match(/@([^ ]*)/)[1];
                     console.log(comment);
