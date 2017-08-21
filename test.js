@@ -6,6 +6,6 @@ async function name() {
     await findOne(callback(err, user));
 
     async function asd() {
-        await hello({}); //@asd
+        await hello({}, callback(err, asd)); //@asd
     }
 }
