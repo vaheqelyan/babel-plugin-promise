@@ -12,7 +12,7 @@ module.exports = function(babel) {
                     } else {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
-                        console.log(getCallbackArguments);
+                        console.log(getCallbackArguments[0].name);
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
                             t.BlockStatement([
