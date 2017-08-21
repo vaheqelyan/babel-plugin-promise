@@ -6,7 +6,7 @@ async function name() {
     await findOne(callback(err, user));
 
     async function asd() {
-        await Use({ name: "vahe", _id: "123123123" }, callback(err, profile)); //@promise
+        await Use({ name: "vahe", _id: "123123123" }, callback(err, profile));
     }
-    await asd();
+    await asd(); //@promise
 }
