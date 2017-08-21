@@ -1,6 +1,6 @@
 var fs = require("fs");
 var babel = require("babel-core");
-var moriscript = require("./moriscript");
+var moriscript = require("./index");
 
 fs.readFile("./test.js", function(err, data) {
     if (err) throw err;
