@@ -10,7 +10,7 @@ module.exports = function(babel) {
                     if (path.node.argument.callee.type === "MemberExpression") {
                         console.log("MemberExpression !");
                     } else {
-                        // let callback = path.node.argument.arguments[path.node.argument.arguments.length - 1];
+                        let callback = path.node.argument.arguments[path.node.argument.arguments.length - 1];
                         // callback = t.ArrowFunctionExpression([], t.BlockStatement([]));
                         //callback = newcallback;
                         path.node.argument.arguments[1] = t.ArrowFunctionExpression([], t.BlockStatement([]));
