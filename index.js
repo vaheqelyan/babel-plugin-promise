@@ -6,7 +6,11 @@ module.exports = function(babel) {
                 let comment = path.parentPath.node.trailingComments;
                 if (comment) {
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
-                    console.log(path.node);
+                    if (path.node.argument.callee.type === "MemberExpression") {
+                        console.log("MemberExpression !");
+                    } else {
+                        console.log("iden");
+                    }
                 }
                 // if (comment !== null) {
                 //     console.log(comment);
