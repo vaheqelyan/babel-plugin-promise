@@ -13,11 +13,10 @@ module.exports = function(babel) {
                         //let callback = path.node.argument.arguments[path.node.argument.arguments.length - 1];
                         //callback = t.ArrowFunctionExpression([], t.BlockStatement([]));
                         //callback = newcallback;
-                        console.log(path.node.argument.arguments);
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
                             t.ArrowFunctionExpression(
                                 [t.Identifier("resolve"), t.Identifier("reject")],
-                                t.BlockStatement([t.ExpressionStatement(t.CallExpression(t.Identifier("asdf"), []))])
+                                t.BlockStatement([t.ExpressionStatement(path.node.argument)])
                             )
                         ]);
                     }
