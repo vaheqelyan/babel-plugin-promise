@@ -54,6 +54,7 @@ module.exports = function(babel) {
                 } else if (path.parentPath.parentPath.node.trailingComments) {
                     const value = path.parentPath.parentPath.node.trailingComments[0].value.match(/@([^ ]*)/)[1];
                     let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
+
                     path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                         getCallbackArguments,
                         t.BlockStatement([
@@ -68,6 +69,13 @@ module.exports = function(babel) {
                             )
                         ])
                     );
+
+                    path.node.argument = t.NewExpression(t.Identifier("Promise"), [
+                        t.ArrowFunctionExpression(
+                            [t.Identifier("resolve"), t.Identifier("reject")],
+                            t.BlockStatement([t.ExpressionStatement(path.node.argument)])
+                        )
+                    ]);
                 }
             }
         }
