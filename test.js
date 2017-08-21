@@ -1,3 +1,3 @@
 async function name() {
-    true await findOne(arg1, callback(err, user)).async();
+    let name= new = await findOne(arg1, callback(err, user)).async();
 }
