@@ -3,7 +3,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             AwaitExpression(path) {
-                let comment = path.parentPath.node.leadingComments;
+                let comment = path.parentPath.node.trailingComments;
                 // if (comment !== null) {
                 //     console.log(comment);
                 //     // comment = comment[0].value.match(/@([^ ]*)/)[1];
