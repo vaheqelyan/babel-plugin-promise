@@ -58,11 +58,6 @@ module.exports = function(babel) {
                         );
                     }
                 }
-                // if (comment !== null) {
-                //     console.log(comment);
-                //     // comment = comment[0].value.match(/@([^ ]*)/)[1];
-                //     // console.log(comment);
-                // }
             }
         }
     };
