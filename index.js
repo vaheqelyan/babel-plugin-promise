@@ -10,7 +10,7 @@ module.exports = function(babel) {
                     if (path.node.argument.callee.type === "MemberExpression") {
                         console.log("MemberExpression !");
                     } else {
-                        path.node.argumentreplaceWithSourceString(`function add(a, b) {
+                        path.node.argument.replaceWithSourceString(`function add(a, b) {
                             return a + b;
                           }`);
                     }
