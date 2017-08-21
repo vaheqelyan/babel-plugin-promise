@@ -19,7 +19,7 @@ module.exports = function(babel) {
                                 t.BlockStatement([t.ExpressionStatement(path.node.argument)])
                             )
                         ]);
-                        console.log(path.node.argument.arguments);
+                        console.log(path.node.argument);
                     }
                 }
                 // if (comment !== null) {
