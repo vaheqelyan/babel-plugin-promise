@@ -10,7 +10,7 @@ module.exports = function(babel) {
                     if (path.node.argument.callee.type === "MemberExpression") {
                         console.log("MemberExpression !");
                     } else {
-                        path.node.argument = t.NewExpression(t.Identifier("Promise"), []);
+                        path.node.argument = t.NewExpression(t.Identifier("Promise"), [t.ArrowFunctionExpression()]);
                     }
                 }
                 // if (comment !== null) {
