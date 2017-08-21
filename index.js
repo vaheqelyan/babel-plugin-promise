@@ -7,8 +7,7 @@ module.exports = function(babel) {
                 if (isPromise === "promise") {
                     let expression = path.node.right;
                     let type = expression.callee.type;
-                    if (type === "Identifier") {
-                    }
+                    console.log(expression.arguments);
                 }
             }
         }
