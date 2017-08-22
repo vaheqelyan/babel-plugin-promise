@@ -31,15 +31,7 @@ module.exports = function(babel) {
                             typeof isError == "boolean"
                                 ? t.IfStatement(t.Identifier("err"), t.ExpressionStatement(t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])))
                                 : null;
-                        path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
-                            getCallbackArguments,
-                            t.BlockStatement([
-                                var prepRejectIf =
-                                
-                                getCallbackArguments[0] ? t.ExpressionStatement(t.Identifier("true")) : t.ExpressionStatement(t.Identifier("false")),
-                                t.ExpressionStatement(t.CallExpression(t.Identifier("resolve"), [t.Identifier("asdasd")]))
-                            ])
-                        );
+                        path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([prepRejectIf]));
 
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
                             t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement(path.node.argument)]))
