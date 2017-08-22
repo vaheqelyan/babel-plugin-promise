@@ -29,7 +29,7 @@ module.exports = function(babel) {
                                 : "no arguments";
 
                         if (isError == true) {
-                            console.log("can add");
+                            path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
                         } else {
                             console.log("can not");
                         }
