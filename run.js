@@ -8,7 +8,7 @@ fs.readFile("./test.js", function(err, data) {
     var src = data.toString();
 
     var out = babel.transform(src, {
-        plugins: [moriscript]
+        plugins: [moriscript, { opt: true }]
     });
 
     console.log(out.code);
