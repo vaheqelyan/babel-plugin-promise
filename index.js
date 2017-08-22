@@ -251,6 +251,7 @@ module.exports = function(babel) {
                     const comment =
                         path.parentPath.parentPath.parentPath.node.trailingComments.value;
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
+                    console.log(value);
                 }
             }
         }
