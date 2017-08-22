@@ -248,7 +248,9 @@ module.exports = function(babel) {
                     }
                 } else {
                     const Atlin = path.node.loc.start.line;
-                    let comment = path.parentPath.parentPath.parentPath.node.trailingComments.value;
+                    const comment =
+                        path.parentPath.parentPath.parentPath.node.trailingComments.value;
+                    const value = comment[0].value.match(/@([^ ]*)/)[1];
                 }
             }
         }
