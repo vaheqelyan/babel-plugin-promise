@@ -247,7 +247,7 @@ module.exports = function(babel) {
                         }
                     }
                 } else {
-                    console.log(path.loc.start.line);
+                    console.log(path.node.loc.start.line);
                 }
             }
         }
