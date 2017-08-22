@@ -70,6 +70,8 @@ module.exports = function(babel) {
                     // in case of parent
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
                     if (path.node.argument.callee.type === "MemberExpression") {
+                        let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
+                        console.log(getCallbackArguments);
                     } else {
                     }
                 }
