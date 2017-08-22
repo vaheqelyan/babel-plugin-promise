@@ -250,7 +250,8 @@ module.exports = function(babel) {
                     const Atlin = path.node.loc.start.line;
                     let comment =
                         path.parentPath.parentPath.parentPath.node.trailingComments[0].value;
-                    console.log(comment);
+                    const value = comment[0].value.match(/@([^ ]*)/)[1];
+                    console.log(value);
                 }
             }
         }
