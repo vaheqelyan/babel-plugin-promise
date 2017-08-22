@@ -246,6 +246,8 @@ module.exports = function(babel) {
                             ]);
                         }
                     }
+                } else {
+                    console.log("should do something");
                 }
             }
         }
