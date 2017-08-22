@@ -68,6 +68,7 @@ module.exports = function(babel) {
                     }
                 } else if (path.parentPath.parentPath.node.trailingComments) {
                     // in case of parent
+                    let comment = path.parentPath.parentPath.node.trailingComments;
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
                     // if (path.node.argument.callee.type === "MemberExpression") {
                     //     let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
