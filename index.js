@@ -67,8 +67,6 @@ module.exports = function(babel) {
                                 t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement(path.node.argument)]))
                             ]);
                         }
-                    } else {
-                        console.log("it is not our business");
                     }
                 } else if (path.parentPath.parentPath.node.trailingComments) {
                     // in case of parent
