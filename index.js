@@ -34,7 +34,10 @@ module.exports = function(babel) {
                                 t.BlockStatement([t.IfStatement(t.Identifier("err"), t.ExpressionStatement(t.CallExpression(t.Identifier("reject"), [t.Identifier("getCallbackArgument")])))])
                             );
                         } else {
-                            console.log("can not");
+                            path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
+                                getCallbackArguments,
+                                t.BlockStatement([t.IfStatement(t.Identifier("err"), t.ExpressionStatement(t.CallExpression(t.Identifier("reject"), [t.Identifier("getCallbackArgument")])))])
+                            );
                         }
                         //path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
