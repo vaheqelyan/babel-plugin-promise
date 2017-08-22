@@ -29,22 +29,7 @@ module.exports = function(babel) {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
 
-                        path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
-                            getCallbackArguments,
-                            t.BlockStatement([
-                                getCallbackArguments[0] &&
-                                    t.IfStatement(
-                                        t.Identifier("err"),
-                                        t.ExpressionStatement(
-                                            t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
-                                        )
-                                    ),
-
-                                t.ExpressionStatement(
-                                    t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)])
-                                )
-                            ])
-                        );
+                        console.log(getCallbackArguments);
 
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
                             t.ArrowFunctionExpression(
