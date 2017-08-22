@@ -248,7 +248,8 @@ module.exports = function(babel) {
                     }
                 } else {
                     const Atlin = path.node.loc.start.line;
-                    let comment = path.parentPath.parentPath.parentPath.node.trailingComments.value;
+                    let comment =
+                        path.parentPath.parentPath.parentPath.node.trailingComments[0].value;
                     console.log(comment);
                 }
             }
