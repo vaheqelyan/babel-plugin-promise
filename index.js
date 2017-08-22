@@ -16,7 +16,7 @@ module.exports = function(babel) {
                                 t.IfStatement(
                                     t.Identifier("err"),
                                     t.ExpressionStatement(
-                                        t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
+                                        t.CallExpression(t.Identifier("reject"), [t.Identifier("getCallbackArgument")])
                                     )
                                 ),
                                 t.ExpressionStatement(
@@ -24,10 +24,6 @@ module.exports = function(babel) {
                                 )
                             ])
                         );
-                        console.log(path.node.argument);
-                    } else {
-                        let getCallbackArguments =
-                            path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
 
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
                             t.ArrowFunctionExpression(
@@ -35,27 +31,6 @@ module.exports = function(babel) {
                                 t.BlockStatement([t.ExpressionStatement(path.node.argument)])
                             )
                         ]);
-                    }
-                } else if (path.parentPath.parentPath.node.trailingComments) {
-                    const value = path.parentPath.parentPath.node.trailingComments[0].value.match(/@([^ ]*)/)[1];
-                    if (path.node.argument.callee.type === "MemberExpression") {
-                        let getCallbackArguments =
-                            path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
-                        path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
-                            getCallbackArguments,
-                            t.BlockStatement([
-                                t.IfStatement(
-                                    t.Identifier("err"),
-                                    t.ExpressionStatement(
-                                        t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
-                                    )
-                                ),
-                                t.ExpressionStatement(
-                                    t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)])
-                                )
-                            ])
-                        );
-                        console.log(path.node.argument);
                     } else {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
@@ -63,15 +38,16 @@ module.exports = function(babel) {
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
                             t.BlockStatement([
-                                t.IfStatement(
-                                    t.Identifier("err"),
-                                    t.ExpressionStatement(
-                                        t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
-                                    )
-                                ),
-                                t.ExpressionStatement(
-                                    t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)])
-                                )
+                                // t.IfStatement(
+                                //     t.Identifier("err"),
+                                //     t.ExpressionStatement(
+                                //         t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
+                                //     )
+                                // ),
+                                getCallbackArguments[0]
+                                    ? t.ExpressionStatement(t.Identifier("true"))
+                                    : t.ExpressionStatement(t.Identifier("false")),
+                                t.ExpressionStatement(t.CallExpression(t.Identifier("resolve"), [t.Identifier("asdasd")]))
                             ])
                         );
 
