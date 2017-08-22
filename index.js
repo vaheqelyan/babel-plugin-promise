@@ -247,7 +247,8 @@ module.exports = function(babel) {
                         }
                     }
                 } else {
-                    console.log(path.node.loc.start.line);
+                    const Atlin = path.node.loc.start.line;
+                    console.log(path.parentPath);
                 }
             }
         }
