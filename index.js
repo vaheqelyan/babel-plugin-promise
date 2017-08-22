@@ -8,6 +8,7 @@ module.exports = function(babel) {
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
 
                     if (path.node.argument.callee.type === "MemberExpression") {
+                        console.log("thats it");
                         let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
