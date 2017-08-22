@@ -20,9 +20,9 @@ module.exports = function(babel) {
                             t.BlockStatement([t.ExpressionStatement(t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)]))])
                         );
 
-                        // path.node.argument = t.NewExpression(t.Identifier("Promise"), [
-                        //     t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement("asdasd")]))
-                        // ]);
+                        path.node.argument = t.NewExpression(t.Identifier("Promise"), [
+                            t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement("asdasd")]))
+                        ]);
                     } else {
                         let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
 
