@@ -14,7 +14,10 @@ module.exports = function(babel) {
                             getCallbackArguments.length > 0
                                 ? (getCallbackArguments[0] !== undefined && getCallbackArguments[0].name === "err") || getCallbackArguments[0].name === "error" ? true : false
                                 : "no arguments";
-                        console.log(isError);
+
+                        path.node.argument = t.NewExpression(t.Identifier("Promise"), [
+                            t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement(path.node.argument)]))
+                        ]);
                     } else {
                         let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
 
