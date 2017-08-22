@@ -22,7 +22,7 @@ module.exports = function(babel) {
                         ]);
                     } else {
                         let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
-                        var isError = (getCallbackArguments[0] && getCallbackArguments[0].name === "err") || getCallbackArguments[0].name === "error" ? func()()() : void 0;
+                        var isError = (getCallbackArguments[0] && getCallbackArguments[0].name === "err") || getCallbackArguments[0].name === "error" ? "exists" : "no";
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
                             t.BlockStatement([
