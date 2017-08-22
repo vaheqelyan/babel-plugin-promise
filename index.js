@@ -31,7 +31,7 @@ module.exports = function(babel) {
                         if (isError == true) {
                             console.log("can add");
                         } else {
-                            cosnole.log("can not");
+                            console.log("can not");
                         }
                         //path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
