@@ -36,7 +36,7 @@ module.exports = function(babel) {
                         } else {
                             path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                                 getCallbackArguments,
-                                t.BlockStatement([t.IfStatement(t.Identifier("err"), t.ExpressionStatement(t.CallExpression(t.Identifier("reject"), [t.Identifier("getCallbackArgument")])))])
+                                t.BlockStatement([t.ExpressionStatement(t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)]))])
                             );
                         }
                         //path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
