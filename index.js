@@ -9,6 +9,7 @@ module.exports = function(babel) {
                     console.log(value);
                     // for just comment
                     if (value === "promisify") {
+                        consol;
                         if (path.node.argument.callee.type === "MemberExpression") {
                             let getCallbackArguments =
                                 path.node.argument.arguments[
