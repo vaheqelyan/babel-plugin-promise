@@ -8,37 +8,21 @@ module.exports = function(babel) {
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
 
                     if (path.node.argument.callee.type === "MemberExpression") {
-                        let getCallbackArguments =
-                            path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
+                        let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
                             t.BlockStatement([
-                                t.IfStatement(
-                                    t.Identifier("err"),
-                                    t.ExpressionStatement(
-                                        t.CallExpression(t.Identifier("reject"), [t.Identifier("getCallbackArgument")])
-                                    )
-                                ),
-                                t.ExpressionStatement(
-                                    t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)])
-                                )
+                                t.IfStatement(t.Identifier("err"), t.ExpressionStatement(t.CallExpression(t.Identifier("reject"), [t.Identifier("getCallbackArgument")]))),
+                                t.ExpressionStatement(t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)]))
                             ])
                         );
 
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
-                            t.ArrowFunctionExpression(
-                                [t.Identifier("resolve"), t.Identifier("reject")],
-                                t.BlockStatement([t.ExpressionStatement(path.node.argument)])
-                            )
+                            t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement(path.node.argument)]))
                         ]);
                     } else {
-                        let getCallbackArguments =
-                            path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
-                        var isError =
-                            (getCallbackArguments[0] && getCallbackArguments[0].name === "err") ||
-                            getCallbackArguments[0].name === "error"
-                                ? func()()()
-                                : void 0;
+                        let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
+                        var isError = (getCallbackArguments[0] && getCallbackArguments[0].name === "err") || getCallbackArguments[0].name === "error" ? func()()() : void 0;
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
                             t.BlockStatement([
@@ -48,18 +32,13 @@ module.exports = function(babel) {
                                 //         t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
                                 //     )
                                 // ),
-                                getCallbackArguments[0]
-                                    ? t.ExpressionStatement(t.Identifier("true"))
-                                    : t.ExpressionStatement(t.Identifier("false")),
+                                getCallbackArguments[0] ? t.ExpressionStatement(t.Identifier("true")) : t.ExpressionStatement(t.Identifier("false")),
                                 t.ExpressionStatement(t.CallExpression(t.Identifier("resolve"), [t.Identifier("asdasd")]))
                             ])
                         );
 
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
-                            t.ArrowFunctionExpression(
-                                [t.Identifier("resolve"), t.Identifier("reject")],
-                                t.BlockStatement([t.ExpressionStatement(path.node.argument)])
-                            )
+                            t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement(path.node.argument)]))
                         ]);
                     }
                 }
