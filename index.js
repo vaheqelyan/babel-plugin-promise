@@ -29,6 +29,7 @@ module.exports = function(babel) {
                                 : "no arguments";
 
                         if (isError != "no arguments" || typeof isError === "boolean" || isError === true) {
+                            console.log("we can add and error too");
                         }
                         //path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
