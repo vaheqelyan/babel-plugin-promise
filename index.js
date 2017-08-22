@@ -251,7 +251,8 @@ module.exports = function(babel) {
                     const comment =
                         path.parentPath.parentPath.parentPath.node.trailingComments[0].value;
                     const value = comment.match(/@([^ ]*)/)[1];
-                    console.log(value);
+                    if (value === "promisify") {
+                    }
                 }
             }
         }
