@@ -5,8 +5,8 @@ module.exports = function(babel) {
             AwaitExpression(path) {
                 let comment = path.parentPath.node.trailingComments;
                 if (comment) {
-                    console.log(comment);
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
+                    console.log(value);
                     // for just comment
                     if (value === "promisify") {
                         if (path.node.argument.callee.type === "MemberExpression") {
