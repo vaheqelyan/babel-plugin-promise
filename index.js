@@ -66,6 +66,8 @@ module.exports = function(babel) {
                             t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement(path.node.argument)]))
                         ]);
                     }
+                } else if (path.parentPath.parentPath.node.trailingComments) {
+                    console.log(path.parentPath.parentPath.node.trailingComments);
                 }
             }
         }
