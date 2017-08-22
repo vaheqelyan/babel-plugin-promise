@@ -29,8 +29,6 @@ module.exports = function(babel) {
                         let getCallbackArguments =
                             path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
 
-                        console.log(getCallbackArguments);
-
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
                             t.ArrowFunctionExpression(
                                 [t.Identifier("resolve"), t.Identifier("reject")],
