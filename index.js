@@ -16,7 +16,7 @@ module.exports = function(babel) {
                                 : "no arguments";
 
                         path.node.argument = t.NewExpression(t.Identifier("Promise"), [
-                            t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement("asdasd")]))
+                            t.ArrowFunctionExpression([t.Identifier("resolve"), t.Identifier("reject")], t.BlockStatement([t.ExpressionStatement(path.node.argument)]))
                         ]);
                     } else {
                         let getCallbackArguments = path.node.argument.arguments[path.node.argument.arguments.length - 1].arguments;
