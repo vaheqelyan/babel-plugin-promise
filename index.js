@@ -27,7 +27,7 @@ module.exports = function(babel) {
                             getCallbackArguments.length > 0
                                 ? (getCallbackArguments[0] !== undefined && getCallbackArguments[0].name === "err") || getCallbackArguments[0].name === "error" ? true : false
                                 : "no arguments";
-                        console.log(isError);
+                        console.log(typeof isError);
                         path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(
                             getCallbackArguments,
                             t.BlockStatement([
