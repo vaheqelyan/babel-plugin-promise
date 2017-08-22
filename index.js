@@ -39,7 +39,7 @@ module.exports = function(babel) {
                                             t.CallExpression(t.Identifier("reject"), [t.Identifier(getCallbackArguments[0].name)])
                                         )
                                     ),
-                                ,
+
                                 t.ExpressionStatement(
                                     t.CallExpression(t.Identifier("resolve"), [t.Identifier(getCallbackArguments[1].name)])
                                 )
