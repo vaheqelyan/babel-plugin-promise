@@ -4,13 +4,9 @@ promise = myaync =>
     }, 1000);
 
 async function name() {
-    asdf;
-    asdfasdf;
-    asdfasdf;
-
-    await findOne(callback(err, user));
+    let { hello, world } = await User.findOne(callback(err, user)); //@promisify
 
     async function asd() {
-        await User.findOne(null, callback(user)); //a@sdasd
+        await User(null, callback(err, user)); //@promisify
     }
 }
