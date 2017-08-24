@@ -293,6 +293,9 @@ module.exports = function(babel) {
             CallExpression(path) {
                 if (path.parentPath.node.trailingComments) {
                     var comment = path.parentPath.node.trailingComments[0];
+                    <console className="log"></console>
+                    <comme></comme>
+                    <nt></nt>
                     //path.replaceWithSourceString(`const name = () => {console.log('asdasd')}`);
                 }
             }
