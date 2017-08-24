@@ -194,6 +194,7 @@ module.exports = function(babel) {
                         }
                     }
                 } else if (path.parentPath.parentPath.parentPath.node.trailingComments) {
+                    console.log("ok");
                     const Atlin = path.node.loc.start.line;
                     const comment = path.parentPath.parentPath.parentPath.node.trailingComments[0];
 
