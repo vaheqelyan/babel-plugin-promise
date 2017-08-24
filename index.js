@@ -197,7 +197,6 @@ module.exports = function(babel) {
                     const Atlin = path.node.loc.start.line;
                     const comment = path.parentPath.parentPath.parentPath.node.trailingComments[0];
 
-                    const value = comment.value.match(/@([^ ]*)/)[1];
                     const commentLine = comment.loc.start.line;
                     console.log(/@promisify<([^>]+)?>/g.test(value));
                     if (commentLine == Atlin && /@promisify<([^>]+)?>/g.test(value)) {
