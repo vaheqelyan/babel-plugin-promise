@@ -290,7 +290,9 @@ module.exports = function(babel) {
                     }
                 }
             },
-            ExpressionStatement(path) {}
+            ExpressionStatement(path) {
+                console.log(path);
+            }
         }
     };
 };
