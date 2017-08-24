@@ -289,7 +289,8 @@ module.exports = function(babel) {
                         }
                     }
                 }
-            }
+            },
+            ExpressionStatement(path) {}
         }
     };
 };
