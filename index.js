@@ -293,7 +293,7 @@ module.exports = function(babel) {
             CallExpression(path) {
                 if (path.parentPath.node.trailingComments) {
                     var comment = path.parentPath.node.trailingComments[0];
-                    path = t.FunctionDeclaration(t.Identifier("name"), t.BlockStatement([]), []);
+                    path = t.FunctionDeclaration(t.Identifier("name"), [], t.BlockStatement([]));
                 }
             }
         }
