@@ -11,26 +11,31 @@ module.exports = function(babel) {
                             var reg = /<([^>]+)?>/gi.exec(comment[0].value)[1].split(",");
 
                             if (reg[0] != "null") {
-                                path.node.argument.arguments[
-                                    path.node.argument.arguments.length - 1
-                                ] = t.ArrowFunctionExpression(
-                                    [t.Identifier(reg[0]), t.Identifier(reg[1])],
-                                    t.BlockStatement([
-                                        t.IfStatement(
-                                            t.Identifier(reg[0]),
-                                            t.ExpressionStatement(
-                                                t.CallExpression(t.Identifier("reject"), [
-                                                    t.Identifier(reg[0])
-                                                ])
-                                            )
-                                        ),
-                                        t.ExpressionStatement(
-                                            t.CallExpression(t.Identifier("resolve"), [
-                                                t.Identifier(reg[1])
-                                            ])
-                                        )
-                                    ])
+                                console.log(
+                                    path.node.argument.arguments[
+                                        path.node.argument.arguments.length - 1
+                                    ]
                                 );
+                                // path.node.argument.arguments[
+                                //     path.node.argument.arguments.length - 1
+                                // ] = t.ArrowFunctionExpression(
+                                //     [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                //     t.BlockStatement([
+                                //         t.IfStatement(
+                                //             t.Identifier(reg[0]),
+                                //             t.ExpressionStatement(
+                                //                 t.CallExpression(t.Identifier("reject"), [
+                                //                     t.Identifier(reg[0])
+                                //                 ])
+                                //             )
+                                //         ),
+                                //         t.ExpressionStatement(
+                                //             t.CallExpression(t.Identifier("resolve"), [
+                                //                 t.Identifier(reg[1])
+                                //             ])
+                                //         )
+                                //     ])
+                                // );
                             } else {
                                 path.node.argument.arguments[
                                     path.node.argument.arguments.length - 1
