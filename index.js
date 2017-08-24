@@ -77,9 +77,7 @@ module.exports = function(babel) {
                                     )
                                 );
                             } else {
-                                path.node.argument.arguments[
-                                    path.node.argument.arguments.length - 1
-                                ] = t.ArrowFunctionExpression(
+                                path.node.argument.argument.push(t.ArrowFunctionExpression(
                                     [t.Identifier(reg[1])],
                                     t.BlockStatement([
                                         t.ExpressionStatement(
@@ -88,7 +86,7 @@ module.exports = function(babel) {
                                             ])
                                         )
                                     ])
-                                );
+                                );)
                             }
                             //path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
                             path.node.argument = t.NewExpression(t.Identifier("Promise"), [
