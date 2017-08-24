@@ -295,7 +295,6 @@ module.exports = function(babel) {
                     var comment = path.node.trailingComments[0];
                     //console.log(comment.value);
                 }
-                path.replaceWith(t.Identifier("asd"));
             }
         }
     };
