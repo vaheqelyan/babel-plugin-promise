@@ -103,7 +103,7 @@ module.exports = function(babel) {
                     // in case of parent
                     let comment = path.parentPath.parentPath.node.trailingComments;
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
-                    if (value === "promisify") {
+                    if (/@promisify<([^>]+)?>/g.test(comment[0].value)) {
                         if (path.node.argument.callee.type === "MemberExpression") {
                             let getCallbackArguments =
                                 path.node.argument.arguments[
