@@ -291,12 +291,12 @@ module.exports = function(babel) {
                 }
             },
             CallExpression(path) {
-                path.replaceWith(t.Identifier("path"));
-                // if (path.parentPath.node.trailingComments) {
-                //     var comment = path.node.trailingComments[0];
-                //     //console.log(path.node);
-                //     path.replaceWith(t.Identifier("path"));
-                // }
+                //path.replaceWith(t.Identifier("path"));
+                if (path.parentPath.node.trailingComments) {
+                    var comment = path.node.trailingComments[0];
+                    //console.log(path.node);
+                    path.replaceWith(t.Identifier("path"));
+                }
             }
         }
     };
