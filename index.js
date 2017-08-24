@@ -105,20 +105,6 @@ module.exports = function(babel) {
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
                     if (/@promisify<([^>]+)?>/g.test(comment[0].value)) {
                         if (path.node.argument.callee.type === "MemberExpression") {
-                            let getCallbackArguments =
-                                path.node.argument.arguments[
-                                    path.node.argument.arguments.length - 1
-                                ].arguments;
-
-                            var isError =
-                                getCallbackArguments.length > 0
-                                    ? (getCallbackArguments[0] !== undefined &&
-                                          getCallbackArguments[0].name === "err") ||
-                                      getCallbackArguments[0].name === "error"
-                                      ? true
-                                      : false
-                                    : "no arguments";
-
                             if (isError == true) {
                                 path.node.argument.arguments[
                                     path.node.argument.arguments.length - 1
