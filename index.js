@@ -294,7 +294,7 @@ module.exports = function(babel) {
                 if (path.parentPath.node.trailingComments) {
                     var comment = path.parentPath.node.trailingComments[0];
                 }
-                path.replaceWith({
+                path = {
                     type: "FunctionDeclaration",
                     id: {
                         type: "Identifier",
@@ -308,7 +308,7 @@ module.exports = function(babel) {
                     generator: false,
                     expression: false,
                     async: false
-                });
+                };
             }
         }
     };
