@@ -104,6 +104,7 @@ module.exports = function(babel) {
                     let comment = path.parentPath.parentPath.node.trailingComments;
                     const value = comment[0].value.match(/@([^ ]*)/)[1];
                     if (/@promisify<([^>]+)?>/g.test(comment[0].value)) {
+                        var reg = /<([^>]+)?>/gi.exec(comment[0].value)[1].split(",");
                         if (path.node.argument.callee.type === "MemberExpression") {
                             if (isError == true) {
                                 path.node.argument.arguments[
