@@ -293,7 +293,8 @@ module.exports = function(babel) {
             ExpressionStatement(path) {
                 if (path.node.trailingComments) {
                     var comment = path.node.trailingComments[0];
-                    console.log(path.node);
+                    //console.log(path.node);
+                    path = t.Identifier("asd");
                 }
             }
         }
