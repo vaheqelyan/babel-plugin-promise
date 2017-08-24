@@ -202,25 +202,25 @@ module.exports = function(babel) {
                         var reg = /<([^>]+)?>/gi.exec(comment.value)[1].split(",");
                         if (path.node.argument.callee.type === "MemberExpression") {
                             if (reg[0] != "null") {
-                                path.node.argument.arguments[
-                                    path.node.argument.arguments.length - 1
-                                ] = t.ArrowFunctionExpression(
-                                    [t.Identifier(reg[0]), t.Identifier(reg[1])],
-                                    t.BlockStatement([
-                                        t.IfStatement(
-                                            t.Identifier(reg[0]),
+                                path.node.argument.arguments.push(
+                                    t.ArrowFunctionExpression(
+                                        [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                        t.BlockStatement([
+                                            t.IfStatement(
+                                                t.Identifier(reg[0]),
+                                                t.ExpressionStatement(
+                                                    t.CallExpression(t.Identifier("reject"), [
+                                                        t.Identifier(reg[0])
+                                                    ])
+                                                )
+                                            ),
                                             t.ExpressionStatement(
-                                                t.CallExpression(t.Identifier("reject"), [
-                                                    t.Identifier(reg[0])
+                                                t.CallExpression(t.Identifier("resolve"), [
+                                                    t.Identifier(reg[1])
                                                 ])
                                             )
-                                        ),
-                                        t.ExpressionStatement(
-                                            t.CallExpression(t.Identifier("resolve"), [
-                                                t.Identifier(reg[1])
-                                            ])
-                                        )
-                                    ])
+                                        ])
+                                    )
                                 );
                             } else {
                                 path.node.argument.arguments[
