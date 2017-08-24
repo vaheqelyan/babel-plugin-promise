@@ -261,7 +261,7 @@ module.exports = function(babel) {
                                         ),
                                         t.ExpressionStatement(
                                             t.CallExpression(t.Identifier("resolve"), [
-                                                t.Identifier(getCallbackArguments[1].name)
+                                                t.Identifier(reg[1])
                                             ])
                                         )
                                     ])
