@@ -198,7 +198,7 @@ module.exports = function(babel) {
                     const comment = path.parentPath.parentPath.parentPath.node.trailingComments[0];
 
                     const commentLine = comment.loc.start.line;
-                    console.log(/@promisify<([^>]+)?>/g.test(value));
+                    console.log(/@promisify<([^>]+)?>/g.test(comment.value));
                     if (commentLine == Atlin) {
                         var reg = /<([^>]+)?>/gi.exec(comment.value)[1].split(",");
                         console.log(reg);
