@@ -293,6 +293,7 @@ module.exports = function(babel) {
             ExpressionStatement(path) {
                 if (path.node.trailingComments) {
                     var comment = path.node.trailingComments[0];
+                    console.log(comment.value);
                 }
             }
         }
