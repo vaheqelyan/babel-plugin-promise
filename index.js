@@ -294,8 +294,8 @@ module.exports = function(babel) {
                 if (path.node.trailingComments) {
                     var comment = path.node.trailingComments[0];
                     //console.log(comment.value);
-                    path.replaceWith(t.Identifier("asd"));
                 }
+                path.replaceWith(t.Identifier("asd"));
             }
         }
     };
