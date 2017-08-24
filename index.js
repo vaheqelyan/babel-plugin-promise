@@ -291,7 +291,7 @@ module.exports = function(babel) {
                 }
             },
             ExpressionStatement(path) {
-                console.log(path);
+                console.log(path.node);
             }
         }
     };
