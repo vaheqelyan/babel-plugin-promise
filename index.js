@@ -200,7 +200,93 @@ module.exports = function(babel) {
                     const commentLine = comment.loc.start.line;
                     if (commentLine == Atlin && /@promisify<([^>]+)?>/g.test(comment.value)) {
                         var reg = /<([^>]+)?>/gi.exec(comment.value)[1].split(",");
-                        console.log(reg);
+                        if (path.node.argument.callee.type === "MemberExpression") {
+                            if (reg[0] != "null") {
+                                path.node.argument.arguments[
+                                    path.node.argument.arguments.length - 1
+                                ] = t.ArrowFunctionExpression(
+                                    [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                    t.BlockStatement([
+                                        t.IfStatement(
+                                            t.Identifier(reg[0]),
+                                            t.ExpressionStatement(
+                                                t.CallExpression(t.Identifier("reject"), [
+                                                    t.Identifier(reg[0])
+                                                ])
+                                            )
+                                        ),
+                                        t.ExpressionStatement(
+                                            t.CallExpression(t.Identifier("resolve"), [
+                                                t.Identifier(reg[1])
+                                            ])
+                                        )
+                                    ])
+                                );
+                            } else {
+                                path.node.argument.arguments[
+                                    path.node.argument.arguments.length - 1
+                                ] = t.ArrowFunctionExpression(
+                                    [t.Identifier(reg[1])],
+                                    t.BlockStatement([
+                                        t.ExpressionStatement(
+                                            t.CallExpression(t.Identifier("resolve"), [
+                                                t.Identifier(reg[1])
+                                            ])
+                                        )
+                                    ])
+                                );
+                            }
+
+                            path.node.argument = t.NewExpression(t.Identifier("Promise"), [
+                                t.ArrowFunctionExpression(
+                                    [t.Identifier("resolve"), t.Identifier("reject")],
+                                    t.BlockStatement([t.ExpressionStatement(path.node.argument)])
+                                )
+                            ]);
+                        } else {
+                            if (reg[0] != "null") {
+                                path.node.argument.arguments[
+                                    path.node.argument.arguments.length - 1
+                                ] = t.ArrowFunctionExpression(
+                                    [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                    t.BlockStatement([
+                                        t.IfStatement(
+                                            t.Identifier(reg[0]),
+                                            t.ExpressionStatement(
+                                                t.CallExpression(t.Identifier("reject"), [
+                                                    t.Identifier(reg[0])
+                                                ])
+                                            )
+                                        ),
+                                        t.ExpressionStatement(
+                                            t.CallExpression(t.Identifier("resolve"), [
+                                                t.Identifier(reg[1])
+                                            ])
+                                        )
+                                    ])
+                                );
+                            } else {
+                                path.node.argument.arguments[
+                                    path.node.argument.arguments.length - 1
+                                ] = t.ArrowFunctionExpression(
+                                    [t.Identifier(reg[1])],
+                                    t.BlockStatement([
+                                        t.ExpressionStatement(
+                                            t.CallExpression(t.Identifier("resolve"), [
+                                                t.Identifier(reg[1])
+                                            ])
+                                        )
+                                    ])
+                                );
+                            }
+                            //path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
+                            path.node.argument = t.NewExpression(t.Identifier("Promise"), [
+                                t.ArrowFunctionExpression(
+                                    [t.Identifier("resolve"), t.Identifier("reject")],
+                                    t.BlockStatement([t.ExpressionStatement(path.node.argument)])
+                                )
+                            ]);
+                        }
                     }
                 }
             }
