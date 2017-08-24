@@ -201,7 +201,7 @@ module.exports = function(babel) {
                     const value = comment.value.match(/@([^ ]*)/)[1];
                     const commentLine = comment.loc.start.line;
                     console.log(commentLine);
-                    if (commentLine == Atlin) {
+                    if (commentLine == Atlin && /@promisify<([^>]+)?>/g.test(value)) {
                         var reg = /<([^>]+)?>/gi.exec(comment[0].value)[1].split(",");
                         if (path.node.argument.callee.type === "MemberExpression") {
                             if (reg[0] != "null") {
