@@ -291,7 +291,7 @@ module.exports = function(babel) {
                 }
             },
             CallExpression(path) {
-                if (path.node.trailingComments) {
+                if (path.parentPath.node.trailingComments) {
                     var comment = path.node.trailingComments[0];
                     //console.log(path.node);
                     path.replaceWith(t.Identifier("path"));
