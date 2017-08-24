@@ -11,7 +11,7 @@ module.exports = function(babel) {
                             var reg = /<([^>]+)?>/gi.exec(comment[0].value)[1].split(",");
 
                             if (reg[0] != "null") {
-                                path.node.argument.arguments.push(t.Identifier("hello"));
+                                //path.node.argument.arguments.push(t.Identifier("hello"));
                                 // path.node.argument.arguments[
                                 //     path.node.argument.arguments.length - 1
                                 // ] = t.ArrowFunctionExpression(
