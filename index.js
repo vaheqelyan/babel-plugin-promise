@@ -294,7 +294,6 @@ module.exports = function(babel) {
                 //path.replaceWith(t.Identifier("path"));
                 if (path.parentPath.node.trailingComments) {
                     var comment = path.parentPath.node.trailingComments[0];
-                    //console.log(path.node);
                     path.replaceWith(t.Identifier("path"));
                 }
             }
