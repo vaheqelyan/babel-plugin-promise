@@ -58,7 +58,7 @@ module.exports = function(babel) {
                             if (reg[0] != "null") {
                                 path.node.argument.arguments[
                                     path.node.argument.arguments.length - 1
-                                ] = t.ArrowFunctionExpression(
+                                ] = .push(t.ArrowFunctionExpression(
                                     [t.Identifier(reg[0]), t.Identifier(reg[1])],
                                     t.BlockStatement([
                                         t.IfStatement(
@@ -75,7 +75,7 @@ module.exports = function(babel) {
                                             ])
                                         )
                                     ])
-                                );
+                                ))
                             } else {
                                 path.node.argument.arguments[
                                     path.node.argument.arguments.length - 1
