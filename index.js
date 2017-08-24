@@ -202,7 +202,7 @@ module.exports = function(babel) {
                     if (commentLine == Atlin && /@promisify<([^>]+)?>/g.test(value)) {
                         var reg = /<([^>]+)?>/gi.exec(comment[0].value)[1].split(",");
                         if (path.node.argument.callee.type === "MemberExpression") {
-                            if (isError == true) {
+                            if (reg[0] != "null") {
                                 path.node.argument.arguments[
                                     path.node.argument.arguments.length - 1
                                 ] = t.ArrowFunctionExpression(
