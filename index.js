@@ -289,26 +289,6 @@ module.exports = function(babel) {
                         }
                     }
                 }
-            },
-            CallExpression(path) {
-                if (path.parentPath.node.trailingComments) {
-                    var comment = path.parentPath.node.trailingComments[0];
-                }
-                path = {
-                    type: "FunctionDeclaration",
-                    id: {
-                        type: "Identifier",
-                        name: "name"
-                    },
-                    params: [],
-                    body: {
-                        type: "BlockStatement",
-                        body: []
-                    },
-                    generator: false,
-                    expression: false,
-                    async: false
-                };
             }
         }
     };
