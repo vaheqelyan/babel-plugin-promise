@@ -77,16 +77,18 @@ module.exports = function(babel) {
                                     )
                                 );
                             } else {
-                                path.node.argument.argument.push(t.ArrowFunctionExpression(
-                                    [t.Identifier(reg[1])],
-                                    t.BlockStatement([
-                                        t.ExpressionStatement(
-                                            t.CallExpression(t.Identifier("resolve"), [
-                                                t.Identifier(reg[1])
-                                            ])
-                                        )
-                                    ])
-                                );)
+                                path.node.argument.argument.push(
+                                    t.ArrowFunctionExpression(
+                                        [t.Identifier(reg[1])],
+                                        t.BlockStatement([
+                                            t.ExpressionStatement(
+                                                t.CallExpression(t.Identifier("resolve"), [
+                                                    t.Identifier(reg[1])
+                                                ])
+                                            )
+                                        ])
+                                    )
+                                );
                             }
                             //path.node.argument.arguments[path.node.argument.arguments.length - 1] = t.ArrowFunctionExpression(getCallbackArguments, t.BlockStatement([]));
                             path.node.argument = t.NewExpression(t.Identifier("Promise"), [
