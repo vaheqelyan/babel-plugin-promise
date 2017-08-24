@@ -294,9 +294,9 @@ module.exports = function(babel) {
                 if (path.node.trailingComments) {
                     var comment = path.node.trailingComments[0];
                     console.log(comment.value);
-                    path.insertAfter(
-                        t.expressionStatement(t.stringLiteral("A little high, little low."))
-                    );
+                    path.replaceWithSourceString(`function add(a, b) {
+                        return a + b;
+                      }`);
                 }
             }
         }
