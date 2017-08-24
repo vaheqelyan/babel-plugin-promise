@@ -200,8 +200,8 @@ module.exports = function(babel) {
                     const commentLine = comment.loc.start.line;
                     console.log(/@promisify<([^>]+)?>/g.test(value));
                     if (commentLine == Atlin) {
-                        //var reg = /<([^>]+)?>/gi.exec(comment.value)[1].split(",");
-                        //console.log(reg);
+                        var reg = /<([^>]+)?>/gi.exec(comment.value)[1].split(",");
+                        console.log(reg);
                     }
                 }
             }
