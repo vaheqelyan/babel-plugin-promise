@@ -199,7 +199,7 @@ module.exports = function(babel) {
 
                     const value = comment.value.match(/@([^ ]*)/)[1];
                     const commentLine = comment.loc.start.line;
-                    if (commentLine == Atlin && /@promisify<([^>]+)?>/g.test(comment[0].value)) {
+                    if (commentLine == Atlin && /@promisify<([^>]+)?>/g.test(value)) {
                         if (path.node.argument.callee.type === "MemberExpression") {
                             let getCallbackArguments =
                                 path.node.argument.arguments[
