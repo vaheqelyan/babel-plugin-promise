@@ -249,13 +249,13 @@ module.exports = function(babel) {
                                 path.node.argument.arguments[
                                     path.node.argument.arguments.length - 1
                                 ] = t.ArrowFunctionExpression(
-                                    getCallbackArguments,
+                                    [t.Identifier(reg[0]), t.Identifier(reg[1])],
                                     t.BlockStatement([
                                         t.IfStatement(
-                                            t.Identifier(getCallbackArguments[0].name),
+                                            t.Identifier(reg[0]),
                                             t.ExpressionStatement(
                                                 t.CallExpression(t.Identifier("reject"), [
-                                                    t.Identifier(getCallbackArguments[0].name)
+                                                    t.Identifier(reg[0])
                                                 ])
                                             )
                                         ),
