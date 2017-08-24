@@ -201,6 +201,7 @@ module.exports = function(babel) {
                     console.log(/@promisify<([^>]+)?>/g.test(value));
                     if (commentLine == Atlin) {
                         var reg = /<([^>]+)?>/gi.exec(comment[0].value)[1].split(",");
+                        console.log(reg);
                     }
                 }
             }
