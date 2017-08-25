@@ -301,7 +301,10 @@ module.exports = function(babel) {
 
                     if (reg[0] && reg[0] != "null") {
                         path.node.right.arguments.push(
-                            t.ArrowFunctionExpression([], t.BlockStatement([]))
+                            t.ArrowFunctionExpression(
+                                [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                t.BlockStatement([])
+                            )
                         );
                         path.parentPath.replaceWith(
                             t.FunctionDeclaration(
