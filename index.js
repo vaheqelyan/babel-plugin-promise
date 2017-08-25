@@ -300,7 +300,6 @@ module.exports = function(babel) {
                     var functionName = value.split(">")[1].replace(/\s/g, "");
 
                     if (reg[0] && reg[0] != "null") {
-                        console.log(path.node.right);
                         path.parentPath.replaceWith(
                             t.FunctionDeclaration(
                                 t.Identifier(functionName),
