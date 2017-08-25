@@ -320,11 +320,7 @@ module.exports = function(babel) {
                                 ])
                             )
                         );
-                        console.log(
-                            path.node.right.arguments[0].value == "arg1"
-                                ? path.node.right.arguments
-                                : []
-                        );
+                        console.log(path.node.right.arguments[0].value == "arg1");
                         path.parentPath.replaceWith(
                             t.FunctionDeclaration(
                                 t.Identifier(functionName),
