@@ -292,8 +292,9 @@ module.exports = function(babel) {
             },
             AssignmentExpression(path) {
                 var name = path.node.left.name;
-                var leadingComments = path.parentPath.node.leadingComments[0].value;
-                var is = /@promisify<([^>]+)?>/g.test(leadingComments);
+                var leadingComments = path.parentPath.node.leadingComments;
+                var value = leadingComments[leadingComments.length - 1].value;
+                var is = /@promisify<([^>]+)?>/g.test(value);
                 if (name === "__") {
                     path.parentPath.replaceWith(
                         t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
