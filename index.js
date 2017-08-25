@@ -339,7 +339,44 @@ module.exports = function(babel) {
                             )
                         );
                     } else {
-                        console.log("handle only resolve");
+                        path.node.right.arguments.push(
+                            t.ArrowFunctionExpression(
+                                [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                t.BlockStatement([
+                                    t.IfStatement(
+                                        t.Identifier(reg[0]),
+                                        t.ExpressionStatement(
+                                            t.CallExpression(t.Identifier("reject"), [
+                                                t.Identifier(reg[0])
+                                            ])
+                                        )
+                                    ),
+                                    t.ExpressionStatement(
+                                        t.CallExpression(t.Identifier("resolve"), [
+                                            t.Identifier(reg[1])
+                                        ])
+                                    )
+                                ])
+                            )
+                        );
+                        path.parentPath.replaceWith(
+                            t.FunctionDeclaration(
+                                t.Identifier(functionName),
+                                [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                t.BlockStatement([
+                                    t.ReturnStatement(
+                                        t.NewExpression(t.Identifier("Promise"), [
+                                            t.ArrowFunctionExpression(
+                                                [t.Identifier("resolve"), t.Identifier("reject")],
+                                                t.BlockStatement([
+                                                    t.ExpressionStatement(path.node.right)
+                                                ])
+                                            )
+                                        ])
+                                    )
+                                ])
+                            )
+                        );
                     }
                 }
             }
