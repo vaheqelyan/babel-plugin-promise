@@ -303,7 +303,21 @@ module.exports = function(babel) {
                         path.node.right.arguments.push(
                             t.ArrowFunctionExpression(
                                 [t.Identifier(reg[0]), t.Identifier(reg[1])],
-                                t.BlockStatement([])
+                                t.BlockStatement([
+                                    t.IfStatement(
+                                        t.Identifier(reg[0]),
+                                        t.ExpressionStatement(
+                                            t.CallExpression(t.Identifier("reject"), [
+                                                t.Identifier(reg[0])
+                                            ])
+                                        )
+                                    ),
+                                    t.ExpressionStatement(
+                                        t.CallExpression(t.Identifier("resolve"), [
+                                            t.Identifier(reg[1])
+                                        ])
+                                    )
+                                ])
                             )
                         );
                         path.parentPath.replaceWith(
