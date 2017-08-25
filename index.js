@@ -1,3 +1,5 @@
+// Longs ....
+
 module.exports = function(babel) {
     const t = babel.types;
     return {
@@ -291,88 +293,104 @@ module.exports = function(babel) {
                 }
             },
             AssignmentExpression(path) {
-                var name = path.node.left.name;
-                var leadingComments = path.parentPath.node.leadingComments;
-                var value = leadingComments[leadingComments.length - 1].value;
-                var is = /@promisify<([^>]+)?>/g.test(value);
-                if (name === "__" && is === true) {
-                    var reg = /<([^>]+)?>/gi.exec(value)[1].split(",");
-                    var functionName = value.split(">")[1].replace(/\s/g, "");
+                if (path.node.left) {
+                    var name = path.node.left.name;
+                    if (path.parentPath.node.leadingComments) {
+                        var leadingComments = path.parentPath.node.leadingComments;
+                        if (leadingComments[leadingComments.length - 1].value) {
+                            var value = leadingComments[leadingComments.length - 1].value;
+                            var is = /@promisify<([^>]+)?>/g.test(value);
+                            if (is) {
+                                if (name === "__" && is === true) {
+                                    var reg = /<([^>]+)?>/gi.exec(value)[1].split(",");
+                                    var functionName = value.split(">")[1].replace(/\s/g, "");
 
-                    if (reg[0] && reg[0] != "null") {
-                        path.node.right.arguments.push(
-                            t.ArrowFunctionExpression(
-                                [t.Identifier(reg[0]), t.Identifier(reg[1])],
-                                t.BlockStatement([
-                                    t.IfStatement(
-                                        t.Identifier(reg[0]),
-                                        t.ExpressionStatement(
-                                            t.CallExpression(t.Identifier("reject"), [
-                                                t.Identifier(reg[0])
-                                            ])
-                                        )
-                                    ),
-                                    t.ExpressionStatement(
-                                        t.CallExpression(t.Identifier("resolve"), [
-                                            t.Identifier(reg[1])
-                                        ])
-                                    )
-                                ])
-                            )
-                        );
-                        var args = path.node.right.arguments;
-                        args = args.filter(val => /arg/gi.test(val.name));
-                        path.parentPath.replaceWith(
-                            t.FunctionDeclaration(
-                                t.Identifier(functionName),
-                                args.length > 0 ? args : [],
-                                t.BlockStatement([
-                                    t.ReturnStatement(
-                                        t.NewExpression(t.Identifier("Promise"), [
+                                    if (reg[0] && reg[0] != "null") {
+                                        path.node.right.arguments.push(
                                             t.ArrowFunctionExpression(
-                                                [t.Identifier("resolve"), t.Identifier("reject")],
+                                                [t.Identifier(reg[0]), t.Identifier(reg[1])],
                                                 t.BlockStatement([
-                                                    t.ExpressionStatement(path.node.right)
+                                                    t.IfStatement(
+                                                        t.Identifier(reg[0]),
+                                                        t.ExpressionStatement(
+                                                            t.CallExpression(
+                                                                t.Identifier("reject"),
+                                                                [t.Identifier(reg[0])]
+                                                            )
+                                                        )
+                                                    ),
+                                                    t.ExpressionStatement(
+                                                        t.CallExpression(t.Identifier("resolve"), [
+                                                            t.Identifier(reg[1])
+                                                        ])
+                                                    )
                                                 ])
                                             )
-                                        ])
-                                    )
-                                ])
-                            )
-                        );
-                    } else {
-                        path.node.right.arguments.push(
-                            t.ArrowFunctionExpression(
-                                [t.Identifier(reg[1])],
-                                t.BlockStatement([
-                                    t.ExpressionStatement(
-                                        t.CallExpression(t.Identifier("resolve"), [
-                                            t.Identifier(reg[1])
-                                        ])
-                                    )
-                                ])
-                            )
-                        );
-                        var args = path.node.right.arguments;
-                        args = args.filter(val => /arg/gi.test(val.name));
-                        path.parentPath.replaceWith(
-                            t.FunctionDeclaration(
-                                t.Identifier(functionName),
-                                args.length > 0 ? args : [],
-                                t.BlockStatement([
-                                    t.ReturnStatement(
-                                        t.NewExpression(t.Identifier("Promise"), [
-                                            t.ArrowFunctionExpression(
-                                                [t.Identifier("resolve")],
+                                        );
+                                        var args = path.node.right.arguments;
+                                        args = args.filter(val => /arg/gi.test(val.name));
+                                        path.parentPath.replaceWith(
+                                            t.FunctionDeclaration(
+                                                t.Identifier(functionName),
+                                                args.length > 0 ? args : [],
                                                 t.BlockStatement([
-                                                    t.ExpressionStatement(path.node.right)
+                                                    t.ReturnStatement(
+                                                        t.NewExpression(t.Identifier("Promise"), [
+                                                            t.ArrowFunctionExpression(
+                                                                [
+                                                                    t.Identifier("resolve"),
+                                                                    t.Identifier("reject")
+                                                                ],
+                                                                t.BlockStatement([
+                                                                    t.ExpressionStatement(
+                                                                        path.node.right
+                                                                    )
+                                                                ])
+                                                            )
+                                                        ])
+                                                    )
                                                 ])
                                             )
-                                        ])
-                                    )
-                                ])
-                            )
-                        );
+                                        );
+                                    } else {
+                                        path.node.right.arguments.push(
+                                            t.ArrowFunctionExpression(
+                                                [t.Identifier(reg[1])],
+                                                t.BlockStatement([
+                                                    t.ExpressionStatement(
+                                                        t.CallExpression(t.Identifier("resolve"), [
+                                                            t.Identifier(reg[1])
+                                                        ])
+                                                    )
+                                                ])
+                                            )
+                                        );
+                                        var args = path.node.right.arguments;
+                                        args = args.filter(val => /arg/gi.test(val.name));
+                                        path.parentPath.replaceWith(
+                                            t.FunctionDeclaration(
+                                                t.Identifier(functionName),
+                                                args.length > 0 ? args : [],
+                                                t.BlockStatement([
+                                                    t.ReturnStatement(
+                                                        t.NewExpression(t.Identifier("Promise"), [
+                                                            t.ArrowFunctionExpression(
+                                                                [t.Identifier("resolve")],
+                                                                t.BlockStatement([
+                                                                    t.ExpressionStatement(
+                                                                        path.node.right
+                                                                    )
+                                                                ])
+                                                            )
+                                                        ])
+                                                    )
+                                                ])
+                                            )
+                                        );
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
