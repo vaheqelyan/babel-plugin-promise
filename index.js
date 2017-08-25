@@ -297,7 +297,7 @@ module.exports = function(babel) {
                 var is = /@promisify<([^>]+)?>/g.test(value);
                 if (name === "__" && is === true) {
                     var reg = /<([^>]+)?>/gi.exec(value)[1].split(",");
-                    var functionName = value.split(">")[1].replace(/ /g, "+");
+                    var functionName = value.split(">")[1].replace(/\s/g, "");
                     console.log(functionName);
                     if (reg[0] && reg[0] != "null") {
                         console.log("handle reject and resolve");
