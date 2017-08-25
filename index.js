@@ -320,7 +320,7 @@ module.exports = function(babel) {
                         console.log("handle only resolve");
                     }
                 }
-            
+            }
         }
     };
 };
