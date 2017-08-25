@@ -1,6 +1,6 @@
 import test from "ava";
 import babel from "babel-core";
-const plugin = require("../");
+import plugin from "../";
 
 var source1 = `
 var fs = require("fs");
