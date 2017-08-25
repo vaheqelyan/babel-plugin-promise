@@ -1,5 +1,5 @@
 import test from "ava";
-import babel from "babel-core";
+const babel = require("babel-core");
 import plugin from "../";
 
 var source1 = `
