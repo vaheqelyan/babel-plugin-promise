@@ -323,7 +323,7 @@ module.exports = function(babel) {
                         path.parentPath.replaceWith(
                             t.FunctionDeclaration(
                                 t.Identifier(functionName),
-                                path.node.right.arguments[0].value == "arg1"
+                                /arg/gi.test(path.node.right.arguments[0].name)
                                     ? path.node.right.arguments
                                     : [],
                                 t.BlockStatement([
