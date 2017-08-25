@@ -353,6 +353,8 @@ module.exports = function(babel) {
                                 ])
                             )
                         );
+                        var args = path.node.right.arguments;
+                        args = args.filter(val => /arg/gi.test(val.name));
                         path.parentPath.replaceWith(
                             t.FunctionDeclaration(
                                 t.Identifier(functionName),
