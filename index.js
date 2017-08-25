@@ -341,16 +341,8 @@ module.exports = function(babel) {
                     } else {
                         path.node.right.arguments.push(
                             t.ArrowFunctionExpression(
-                                [t.Identifier(reg[0]), t.Identifier(reg[1])],
+                                [t.Identifier(reg[1])],
                                 t.BlockStatement([
-                                    t.IfStatement(
-                                        t.Identifier(reg[0]),
-                                        t.ExpressionStatement(
-                                            t.CallExpression(t.Identifier("reject"), [
-                                                t.Identifier(reg[0])
-                                            ])
-                                        )
-                                    ),
                                     t.ExpressionStatement(
                                         t.CallExpression(t.Identifier("resolve"), [
                                             t.Identifier(reg[1])
@@ -367,7 +359,7 @@ module.exports = function(babel) {
                                     t.ReturnStatement(
                                         t.NewExpression(t.Identifier("Promise"), [
                                             t.ArrowFunctionExpression(
-                                                [t.Identifier("resolve"), t.Identifier("reject")],
+                                                [t.Identifier("resolve")],
                                                 t.BlockStatement([
                                                     t.ExpressionStatement(path.node.right)
                                                 ])
