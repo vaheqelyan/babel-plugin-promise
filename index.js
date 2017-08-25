@@ -297,7 +297,7 @@ module.exports = function(babel) {
                 var is = /@promisify<([^>]+)?>/g.test(value);
                 if (name === "__" && is === true) {
                     var reg = /<([^>]+)?>/gi.exec(comment.value)[1].split(",");
-                    
+                    console.log(reg);
                     // path.parentPath.replaceWith(
                     //     t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
                     // );
