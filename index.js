@@ -301,7 +301,11 @@ module.exports = function(babel) {
 
                     if (reg[0] && reg[0] != "null") {
                         path.parentPath.replaceWith(
-                            t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
+                            t.FunctionDeclaration(
+                                t.Identifier(functionName),
+                                [],
+                                t.BlockStatement([])
+                            )
                         );
                     } else {
                         console.log("handle only resolve");
