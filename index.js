@@ -296,9 +296,9 @@ module.exports = function(babel) {
                 var value = leadingComments[leadingComments.length - 1].value;
                 var is = /@promisify<([^>]+)?>/g.test(value);
                 if (name === "__" && is === true) {
-                    path.parentPath.replaceWith(
-                        t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
-                    );
+                    // path.parentPath.replaceWith(
+                    //     t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
+                    // );
                 }
             }
         }
