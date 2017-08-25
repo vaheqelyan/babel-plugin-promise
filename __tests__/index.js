@@ -136,4 +136,4 @@ test("Promisify using async/await with trailing comments + multiple", t => {
     t.not(trim(code), trim(source9));
 });
 
-// MENMA CLI
+// MENMA CLI ++ works
