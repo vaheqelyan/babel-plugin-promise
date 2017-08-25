@@ -5,7 +5,19 @@
     "repository": "https://github.com/vaheqelyan/babel-plugin-promise.git",
     "author": "vaheqelyan <vahe.araqelyan.2013@hotmail.com>",
     "license": "MIT",
+    "keywords": ["babel", "plugin", "promise"],
+    "scripts": {
+        "test": "ava"
+    },
+    "bugs": {
+        "url": "https://github.com/vaheqelyan/babel-plugin-promise/issues"
+    },
     "devDependencies": {
+        "ava": "^0.22.0",
         "babel-core": "^6.26.0"
+    },
+    "ava": {
+        "files": ["__tests__/*.js"],
+        "verbose": true
     }
 }
