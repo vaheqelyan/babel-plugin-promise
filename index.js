@@ -320,10 +320,7 @@ module.exports = function(babel) {
                         console.log("handle only resolve");
                     }
                 }
-            },
-            CommentLine(path) {
-                console.log(path);
-            }
+            
         }
     };
 };
