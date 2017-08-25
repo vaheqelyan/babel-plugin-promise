@@ -299,6 +299,8 @@ module.exports = function(babel) {
                     var reg = /<([^>]+)?>/gi.exec(value)[1].split(",");
                     if (reg[0] && reg[0] != "null") {
                         console.log("handle reject and resolve");
+                    } else {
+                        console.log("handle only resolve");
                     }
                     // path.parentPath.replaceWith(
                     //     t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
