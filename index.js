@@ -307,7 +307,10 @@ module.exports = function(babel) {
                                 t.BlockStatement([
                                     t.ReturnStatement(
                                         t.NewExpression(t.Identifier("Promise"), [
-                                            t.ArrowFunctionExpression([], t.BlockStatement([]))
+                                            t.ArrowFunctionExpression(
+                                                [t.Identifier("resolve"), t.Identifier("reject")],
+                                                t.BlockStatement([])
+                                            )
                                         ])
                                     )
                                 ])
