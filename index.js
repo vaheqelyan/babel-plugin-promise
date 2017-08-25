@@ -298,6 +298,7 @@ module.exports = function(babel) {
                 if (name === "__" && is === true) {
                     var reg = /<([^>]+)?>/gi.exec(value)[1].split(",");
                     var functionName = value.match(/>([^ ]*)/)[1];
+                    console.log(functionName);
                     if (reg[0] && reg[0] != "null") {
                         console.log("handle reject and resolve");
                     } else {
