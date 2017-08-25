@@ -304,7 +304,9 @@ module.exports = function(babel) {
                             t.FunctionDeclaration(
                                 t.Identifier(functionName),
                                 [t.Identifier(reg[0]), t.Identifier(reg[1])],
-                                t.BlockStatement([])
+                                t.BlockStatement([
+                                    t.ReturnStatement(t.NewExpression(t.Identifier("Promise")))
+                                ])
                             )
                         );
                     } else {
