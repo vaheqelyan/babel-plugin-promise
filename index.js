@@ -295,7 +295,7 @@ module.exports = function(babel) {
                 var leadingComments = path.parentPath.node.leadingComments;
                 var value = leadingComments[leadingComments.length - 1].value;
                 var is = /@promisify<([^>]+)?>/g.test(value);
-                if (name === "__") {
+                if (name === "__" && is === true) {
                     path.parentPath.replaceWith(
                         t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
                     );
