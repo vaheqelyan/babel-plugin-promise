@@ -325,7 +325,7 @@ module.exports = function(babel) {
                         path.parentPath.replaceWith(
                             t.FunctionDeclaration(
                                 t.Identifier(functionName),
-                                [],
+                                args.length > 0 ? args : [],
                                 t.BlockStatement([
                                     t.ReturnStatement(
                                         t.NewExpression(t.Identifier("Promise"), [
