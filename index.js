@@ -300,13 +300,12 @@ module.exports = function(babel) {
                     var functionName = value.split(">")[1].replace(/\s/g, "");
 
                     if (reg[0] && reg[0] != "null") {
-                        console.log("handle reject and resolve");
+                        path.parentPath.replaceWith(
+                            t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
+                        );
                     } else {
                         console.log("handle only resolve");
                     }
-                    // path.parentPath.replaceWith(
-                    //     t.FunctionDeclaration(t.Identifier("asd"), [], t.BlockStatement([]))
-                    // );
                 }
             }
         }
