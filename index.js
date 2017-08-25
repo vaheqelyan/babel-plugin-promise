@@ -309,7 +309,9 @@ module.exports = function(babel) {
                                         t.NewExpression(t.Identifier("Promise"), [
                                             t.ArrowFunctionExpression(
                                                 [t.Identifier("resolve"), t.Identifier("reject")],
-                                                t.BlockStatement([path.node.right])
+                                                t.BlockStatement([
+                                                    t.ExpressionStatement(path.node.right)
+                                                ])
                                             )
                                         ])
                                     )
