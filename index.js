@@ -341,7 +341,6 @@ module.exports = function(babel) {
                             )
                         );
                     } else {
-                        console.log("ok");
                         path.node.right.arguments.push(
                             t.ArrowFunctionExpression(
                                 [t.Identifier(reg[1])],
