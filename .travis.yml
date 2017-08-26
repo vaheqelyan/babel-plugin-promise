@@ -7,3 +7,4 @@ before_script:
   - npm i -g ava
   - yarn
 script: npm test
+os: osx
