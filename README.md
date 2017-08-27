@@ -6,7 +6,7 @@ Turn any callback into promise
 
 [Basic promisify using leading comments](#basic)
 
-[Without error handle](#without-error-handle)
+[Without error handling.](#without-error-handling)
 
 [Using your own arguments](#using-your-own-arguments)
 
