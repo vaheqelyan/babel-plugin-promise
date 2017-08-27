@@ -24,9 +24,8 @@ __ = fs.readFile("../package.json", "utf8");
 `;
 
 let source4 = `
-var fs = require("fs");
-//@promisify<null,data> myPromised
-__ = fs.readFile("../package.json", arg1, arg2);
+//@promisify<err,data> findUser
+__ = User.findOne(arg1);
 
 `;
 
@@ -103,19 +102,16 @@ test("Promisify using leading comments with custom arguments", t => {
 
 test("Promisify using async/await with arrow function with trailing comments", t => {
     const { code } = babel.transform(source2, { plugins: [plugin] });
-
     t.not(trim(code), trim(source2));
 });
 
 test("Promisify using async/await with trailing comments", t => {
     const { code } = babel.transform(source5, { plugins: [plugin] });
-
     t.not(trim(code), trim(source5));
 });
 
 test("Promisify using async/await with trailing comments without error handle", t => {
     const { code } = babel.transform(source6, { plugins: [plugin] });
-
     t.not(trim(code), trim(source6));
 });
 
@@ -135,5 +131,3 @@ test("Promisify using async/await with trailing comments + multiple", t => {
     const { code } = babel.transform(source9, { plugins: [plugin] });
     t.not(trim(code), trim(source9));
 });
-
-// MENMA++
