@@ -14,6 +14,15 @@ Turn any callback into a promise
 
 [ES7 Async/Await + Arrow functions](#es7-async-and-await-arrow-functions)
 
+via NPM 
+```code
+npm install babel-plugin-promise --save-dev
+```
+
+via YARN
+```code
+yarn add babel-plugin-promise --dev
+```
 
 ## Basic
 
