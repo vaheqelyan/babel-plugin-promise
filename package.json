@@ -1,6 +1,6 @@
 {
     "name": "babel-plugin-promise",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "index.js",
     "repository": "https://github.com/vaheqelyan/babel-plugin-promise.git",
     "author": "vaheqelyan <vahe.araqelyan.2013@hotmail.com>",
