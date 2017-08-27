@@ -58,7 +58,7 @@ promiseName().then(res => {
 ```
 
 
-## Without error handle
+## Without error handling. 
 
 If the callback does not return us the error message, insert ```null``` instead of ```error```
 
