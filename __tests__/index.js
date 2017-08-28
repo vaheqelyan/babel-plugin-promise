@@ -94,7 +94,6 @@ function resolveAfter2Seconds(x) {
 
 //asdasd
 //@promisify<err,data> myasync
-__ = hello.world()
 
 async function add1(x) {
     var a = resolveAfter2Seconds(20);
