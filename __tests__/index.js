@@ -167,7 +167,7 @@ test("Promisify using async/await with trailing comments + multiple", t => {
     t.not(trim(code), trim(source9));
 });
 
-test.only("Bug fix", t => {
+test("Bug fix", t => {
     const { code } = babel.transform(source10, {
         plugins: [
             plugin,
