@@ -167,7 +167,7 @@ test("Promisify using async/await with trailing comments + multiple", t => {
     t.not(trim(code), trim(source9));
 });
 
-test("Bug fix #1", t => {
+test("Bug fix #1 unknown: Cannot read property 'value' of undefined", t => {
     const { code } = babel.transform(source10, {
         plugins: [
             plugin,
