@@ -92,7 +92,6 @@ function resolveAfter2Seconds(x) {
     });
 }
 
-//asdasd
 //@promisify<err,data> myasync
 
 async function add1(x) {
