@@ -175,7 +175,6 @@ test.only("Bug fix", t => {
             require("babel-plugin-transform-regenerator")
         ]
     });
-    console.log(code);
 
     t.not(trim(code), trim(source9));
 });
