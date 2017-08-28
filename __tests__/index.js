@@ -81,6 +81,43 @@ async function sample() {
 
 `;
 
+let source10 = `
+require("babel-polyfill");
+
+function resolveAfter2Seconds(x) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(x);
+        }, 2000);
+    });
+}
+
+//asdasd
+//@promisify<err,data> myasync
+__ = hello.world()
+
+async function add1(x) {
+    var a = resolveAfter2Seconds(20);
+    var b = resolveAfter2Seconds(30);
+    return x + (await a) + (await b);
+}
+
+add1(10).then(v => {
+    console.log(v);
+});
+
+async function add2(x) {
+    var a = await resolveAfter2Seconds(20);
+    var b = await resolveAfter2Seconds(30);
+    return x + a + b;
+}
+
+add2(10).then(v => {
+    console.log(v, "done");
+});
+
+`;
+
 function trim(str) {
     return str.split("\n").join("");
 }
@@ -129,5 +166,18 @@ test("Promisify using async/await with trailing comments + object pattern + try/
 
 test("Promisify using async/await with trailing comments + multiple", t => {
     const { code } = babel.transform(source9, { plugins: [plugin] });
+    t.not(trim(code), trim(source9));
+});
+
+test.only("Bug fix", t => {
+    const { code } = babel.transform(source10, {
+        plugins: [
+            plugin,
+            require("babel-plugin-syntax-async-functions"),
+            require("babel-plugin-transform-regenerator")
+        ]
+    });
+    console.log(code);
+
     t.not(trim(code), trim(source9));
 });
